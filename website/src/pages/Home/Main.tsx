@@ -1,56 +1,75 @@
 import React, { useState } from 'react'
+import { IoIosAddCircleOutline } from 'react-icons/io' 
+import { BsTrash } from 'react-icons/bs' 
 
 import Container from '../../components/Container'
+import Block from '../../components/Block'
 
 // function Block()
 
-interface Block {
+interface BlockInput {
   name: string
   chain: string
   testnet?: boolean
 }
 
-type Blocks = Block[]
+type Blocks = BlockInput[]
 
-function BlockRow({ block }: { block: Block }) {
-  return (
-    <div className="py-4 px-10">
-      <div>
-        <span>Name:</span>
-        <span>{block.name}</span>
-      </div>
-      <div>
-        <span>Chain:</span>
-        <span>{block.chain}</span>
-      </div>
-    </div>
-  )
-}
 
 export default function HomePageMain() {
   const [blocks, setBlocks] = useState<Blocks>([
-    {
-      name: 'one',
-      chain: 'Ethereum',
-      testnet: true,
-    },
-    {
-      name: 'two',
-      chain: 'Polygon',
-      testnet: true,
-    },
+    { 
+      name: 'one', 
+      chain: 'Ethereum', 
+      testnet: true
+    }
   ])
+
+  // function BlockRow({ block, index }: { block: typeof Block, index: number}) {
+  //   return (
+  //     <Block name={block.name} chain={block.chain} testnet={block.testnet}>
+
+  //     </Block>
+  //   )
+  // }
+
+  const removeBlock = (index: number) => {
+    console.log('remove block'); 
+    setBlocks((blocks) =>
+      blocks.filter(function(item, itemIdx) {
+        return itemIdx != index; 
+      }))
+    
+  }
+
+  const addBlock = () => {
+    console.log("pushing new block");
+    setBlocks([...blocks, {
+      name: 'one', 
+      chain: 'Ethereum',
+      testnet: true
+    }]); 
+  }
 
   return (
     <Container>
       <section>
-        <div className="bg-[#1a1b1f] shadow-xl rounded-xl">
+        <div className="">
           <div className="py-6 px-10">
             <h2 className="text-[#7b3fe4] text-xl font-semibold">Build your transactions</h2>
           </div>
           <div className="flex flex-col space-y-2 py-4">
-            {blocks.length ? blocks.map((block, idx) => (<BlockRow key={`${block.name}_${idx}`} block={block} />)) : <></>}
+            {blocks.length ? blocks.map((block, idx) => (
+                // <BlockRow key={`${block.name}_${idx}`} block={block} index={idx}/>
+                <Block name={block.name} chain={block.chain} index={idx} removeBlock={removeBlock}></Block>
+              )
+            ) : <></>}
           </div>
+        </div>
+        <div className="py-10  flex justify-center">
+          <button onClick={addBlock}>
+            <IoIosAddCircleOutline className="scale-125"/>
+          </button>
         </div>
       </section>
     </Container>
