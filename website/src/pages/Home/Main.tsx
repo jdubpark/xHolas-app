@@ -61,7 +61,7 @@ export default function HomePageMain() {
           <div className="flex flex-col space-y-2 py-4">
             {blocks.length ? blocks.map((block, idx) => (
                 // <BlockRow key={`${block.name}_${idx}`} block={block} index={idx}/>
-                <Block defaultName={block.defaultName} defaultChain={block.defaultChain} index={idx} removeBlock={removeBlock}></Block>
+                <Block key={idx} defaultName={block.defaultName} defaultChain={block.defaultChain} index={idx} removeBlock={removeBlock}></Block>
               )
             ) : <></>}
           </div>
