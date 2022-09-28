@@ -8,8 +8,8 @@ import Block from '../../components/Block'
 // function Block()
 
 interface BlockInput {
-  name: string
-  chain: string
+  defaultName: string
+  defaultChain: string
   testnet?: boolean
 }
 
@@ -19,8 +19,8 @@ type Blocks = BlockInput[]
 export default function HomePageMain() {
   const [blocks, setBlocks] = useState<Blocks>([
     { 
-      name: 'one', 
-      chain: 'Ethereum', 
+      defaultName: 'one', 
+      defaultChain: 'Ethereum', 
       testnet: true
     }
   ])
@@ -45,8 +45,8 @@ export default function HomePageMain() {
   const addBlock = () => {
     console.log("pushing new block");
     setBlocks([...blocks, {
-      name: 'one', 
-      chain: 'Ethereum',
+      defaultName: 'one', 
+      defaultChain: 'Ethereum',
       testnet: true
     }]); 
   }
@@ -61,7 +61,7 @@ export default function HomePageMain() {
           <div className="flex flex-col space-y-2 py-4">
             {blocks.length ? blocks.map((block, idx) => (
                 // <BlockRow key={`${block.name}_${idx}`} block={block} index={idx}/>
-                <Block name={block.name} chain={block.chain} index={idx} removeBlock={removeBlock}></Block>
+                <Block defaultName={block.defaultName} defaultChain={block.defaultChain} index={idx} removeBlock={removeBlock}></Block>
               )
             ) : <></>}
           </div>
