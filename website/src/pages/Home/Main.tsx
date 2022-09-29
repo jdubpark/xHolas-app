@@ -10,22 +10,30 @@ import NewList from '../../components/NewList'
 
 interface BlockInput {
   id: string
-  defaultName: string
-  defaultChain: string
-  testnet?: boolean
+  strategy: string
+  chain: string
+  destinationChain?: string
+  inputToken: string
+  inputAmount: number
+  outputToken: string  
 }
 
-type Blocks = BlockInput[]
+export type Blocks = BlockInput[]
 
 
 export default function HomePageMain() {
+
+  const [defaultBlock, setDefaultBlock] = useState<BlockInput>({ 
+    id: 'item-0', 
+    strategy: 'Swap',
+    chain: 'Ethereum', 
+    inputToken: 'HTK', 
+    inputAmount: 0, 
+    outputToken: 'CET'
+  })
+
   const [blocks, setBlocks] = useState<Blocks>([
-    { 
-      id: 'item-0',
-      defaultName: 'one', 
-      defaultChain: 'Ethereum', 
-      testnet: true
-    }
+    defaultBlock
   ])
 
   const removeBlock = (index: number) => {
@@ -39,10 +47,8 @@ export default function HomePageMain() {
   const addBlock = () => {
     console.log("pushing new block");
     setBlocks([...blocks, {
+      ...defaultBlock,
       id: `item=${blocks.length}`,
-      defaultName: 'one', 
-      defaultChain: 'Ethereum',
-      testnet: true
     }]); 
   }
 
@@ -55,7 +61,7 @@ export default function HomePageMain() {
           </div>
           <div className="flex flex-col space-y-2 py-4">
             {/* <List blocks={blocks} removeBlock={removeBlock}></List> */}
-            <NewList blocks={blocks} removeBlock={removeBlock}></NewList>
+            <NewList blocks={blocks} setBlocks={setBlocks} removeBlock={removeBlock}></NewList>
             {/* {blocks.length ? blocks.map((block, idx) => (
                 // <BlockRow key={`${block.name}_${idx}`} block={block} index={idx}/>
                 <Block key={idx} defaultName={block.defaultName} defaultChain={block.defaultChain} index={idx} removeBlock={removeBlock}></Block>

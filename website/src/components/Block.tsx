@@ -8,20 +8,20 @@ import { useContract, useSigner } from 'wagmi';
 import { config, networkConfig } from '../config';
 import { FormControl, InputLabel, MenuItem, TextField } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
+import { Blocks } from '../pages/Home/Main'
 
 interface BlockParams {
-    defaultName: string
-    defaultChain: string
-    testnet?: boolean
+    blocks: Blocks
+    setBlocks: React.Dispatch<React.SetStateAction<Blocks>>
     index: number
+    id: string
     removeBlock: (index: number) => void
 }
 
-export default function Block({ defaultName, defaultChain, index, removeBlock }: BlockParams) {
+export default function Block({ blocks, setBlocks, id, index, removeBlock }: BlockParams) {
 
     // drop down options 
-    const [chain, setChain] = useState<string>(defaultChain);
+    const [chain, setChain] = useState<string>("");
     const [strategy, setStrategy] = useState<string>("");
 
     // for swaps 
@@ -31,8 +31,6 @@ export default function Block({ defaultName, defaultChain, index, removeBlock }:
     const [outputAmount, setOutputAmount] = useState<number>(0);
 
     const [contractAddress, setContractAddress] = useState<string>(ethers.constants.AddressZero);
-
-    const [name, setName] = useState<string>(defaultName); // custom name for strategy 
 
     const { data: signer, isError, isLoading } = useSigner();
 
@@ -66,9 +64,19 @@ export default function Block({ defaultName, defaultChain, index, removeBlock }:
 
     }
 
+    // update the blocks array using id 
     const handleStrategyChange = (event: SelectChangeEvent) => {
         console.log('event.target.value: ', event.target.value);
-        setStrategy(event.target.value);
+        console.log('handle blocks: ', blocks); 
+        setBlocks([...blocks].map((block) => {
+            if (block.id == id) {
+                return {
+                    ...block,
+                    strategy: event.target.value 
+                }
+            } else return block; 
+        }))
+        
     }
 
     const handleChainChange = (event: SelectChangeEvent) => {

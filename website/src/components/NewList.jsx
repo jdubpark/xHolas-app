@@ -73,7 +73,7 @@ export default function NewList({ blocks, setBlocks, removeBlock }) {
                                                 //   )}
                                                 >
                                                     {block.id}
-                                                    <Block key={idx} defaultName={block.defaultName} defaultChain={block.defaultChain} index={idx} removeBlock={removeBlock}></Block>
+                                                    <Block blocks={blocks} key={block.id} id={block.id} setBlocks={setBlocks} index={idx} removeBlock={removeBlock}></Block>
                                                 </div>
                                             )}
 
