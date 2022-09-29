@@ -66,8 +66,6 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
 
     // update the blocks array using id 
     const handleStrategyChange = (event: SelectChangeEvent) => {
-        console.log('event.target.value: ', event.target.value);
-        console.log('handle blocks: ', blocks); 
         setBlocks([...blocks].map((block) => {
             if (block.id == id) {
                 return {
@@ -75,23 +73,55 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                     strategy: event.target.value 
                 }
             } else return block; 
-        }))
-        
+        }))   
+        setStrategy(event.target.value); 
     }
 
     const handleChainChange = (event: SelectChangeEvent) => {
-        setChain(event.target.value);
+        setBlocks(blocks.map((block) => {
+            if (block.id == id) {
+                return {
+                    ...block,
+                    chain: event.target.value
+                }
+            } else return block; 
+        }))
+        setChain(event.target.value); 
     }
 
     const handleInputTokenChange = (event: SelectChangeEvent) => {
-        setInputToken(event.target.value);
+        setBlocks(blocks.map((block) => {
+            if (block.id == id) {
+                return {
+                    ...block,
+                    inputToken: event.target.value
+                }
+            } else return block; 
+        }))
+        setInputToken(event.target.value); 
     }
 
     const handleInputAmountChange = (event: SelectChangeEvent) => {
-        setInputAmount(parseInt(event.target.value));
+        setBlocks(blocks.map((block) => {
+            if (block.id == id) {
+                return {
+                    ...block,
+                    inputAmount: parseInt(event.target.value)
+                }
+            } else return block; 
+        }))
+        setInputAmount(parseInt(event.target.value)); 
     }
 
     const handleOutputTokenChange = (event: SelectChangeEvent) => {
+        setBlocks(blocks.map((block) => {
+            if (block.id == id) {
+                return {
+                    ...block,
+                    outputAmount: parseInt(event.target.value)
+                }
+            } else return block; 
+        }))
         setOutputToken(event.target.value);
     }
 
