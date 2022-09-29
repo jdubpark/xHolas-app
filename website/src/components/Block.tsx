@@ -15,7 +15,7 @@ interface BlockParams {
     removeBlock: (index: number) => void
 }
 
-export default function Block({ defaultName, defaultChain, testnet, index, removeBlock }: BlockParams) {
+export default function Block({ defaultName, defaultChain, index, removeBlock }: BlockParams) {
 
     // drop down options 
     const [chain, setChain] = useState<string>(defaultChain); 
@@ -76,8 +76,8 @@ export default function Block({ defaultName, defaultChain, testnet, index, remov
                     </button>
                 </div>
 
-                <div className="flex items-center">
-                    <button onClick={() => removeBlock(index)}>
+                <div className="flex items-center z-10">
+                    <button onClick={() => removeBlock(index)} >
                         <BsTrash />
                     </button>
                 </div>

@@ -56,7 +56,7 @@ const rainbowKitTheme = darkTheme({
 const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider
         chains={chains}
@@ -77,5 +77,5 @@ root.render(
         </Provider>
       </RainbowKitProvider>
     </WagmiConfig>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )
