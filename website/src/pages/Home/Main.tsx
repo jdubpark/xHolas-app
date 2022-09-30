@@ -6,6 +6,10 @@ import Container from '../../components/Container'
 import Block from '../../components/Block'
 import List from '../../components/List'
 import NewList from '../../components/NewList' 
+import xHolas from '../../assets/xHolas.svg'
+import { config } from '../../config'
+import ethers from "ethers"
+import { Dataset } from '@mui/icons-material'
 // function Block()
 
 interface BlockInput {
@@ -52,6 +56,68 @@ export default function HomePageMain() {
     }]); 
   }
 
+  // const encodeParams = (shortABI, params) => {
+  //   // const shortABI = [
+  //   //   'function swapExactTokensForETH(uint256 amountIn, uint256 amountOutMin, address[] calldata path)'
+  //   // ]
+  //   const data = []; 
+  //   const iface = new ethers.utils.Interface(shortABI)
+  //   const data1 = iface.encodeFunctionData(
+  //     'swapExactTokensForETH',
+  //     [
+  //       ethers.utils.parseEther('0.0001'),
+  //       '0',
+  //       [
+  //         '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // WETH input token, output token 
+  //         '0xf4b2cbc3ba04c478f0dc824f4806ac39982dce73', // USDT
+  //       ],
+  //     ],
+  //   )
+
+  //   const datas = [
+  //     data1,
+  //   ]
+  //   return datas; 
+  //   // const contract = XHolas__factory.connect(networkConfig.goerli.xProxyAddress as string, signer.goerli)
+  //   // const tx = await contract.batchExec(tos, configs, datas, {
+  //   //   value: ethers.utils.parseEther('0.0001'),
+  //   //   ...stupidConfig.goerli,
+  //   // })
+  // }
+
+  const executeBlocks = () => {
+    // get all strategy + chain -> handler(contract) address
+    const tos = []; 
+    const chainIds = []; 
+    const configs = [
+      '0x0000000000000000000000000000000000000000000000000000000000000000',
+      '0x0000000000000000000000000000000000000000000000000000000000000000',
+      '0x0000000000000000000000000000000000000000000000000000000000000000',
+    ]
+    const datas = []; 
+
+    blocks.forEach((block) => {
+      const addr = config[block.strategy][block.chain].contractAddress;
+      const wormholeId = config[block.strategy][block.chain].wormholeId;
+      
+      const shortABI = config[block.strategy][block.chain].shortABI; 
+      const functionSig = config[block.strategy][block.chain].functionSig; 
+      // let data = encodeParams(shortABI, [functionSig, block.]);
+      
+      // datas.push(data);  
+      tos.push(addr); 
+      chainIds.push(wormholeId); 
+    })
+    
+    // call executeTransactionsEntryPoint
+    // const contract = XHolas__factory.connect(networkConfig.goerli.xProxyAddress as string, signer.goerli)
+    // const tx = await contract.batchExec(tos, configs, datas, {
+    //   value: ethers.utils.parseEther('0.0001'),
+    //   ...stupidConfig.goerli,
+    // })
+
+  }
+
   return (
     <Container>
       <section>
@@ -69,9 +135,15 @@ export default function HomePageMain() {
             ) : <></>} */}
           </div>
         </div>
-        <div className="py-10  flex justify-center">
-          <button onClick={addBlock}>
+        <div className="py-10  flex flex-col space-y-2 items-center justify-center">
+          <button onClick={addBlock} className="mb-10 scale-125">
             <IoIosAddCircleOutline className="scale-125"/>
+          </button>
+
+          <button onClick={executeBlocks}>
+            <div className="inline-block align-middle">
+                <img src={xHolas} alt="xHolasLogo" className="h-full w-full max-h-12" />
+              </div>
           </button>
         </div>
       </section>

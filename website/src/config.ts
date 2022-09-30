@@ -10,26 +10,42 @@ interface NetworkConfig {
 interface Config {
     [chain: string] : {
         [strategy: string] : {
-            contractAddress: string;
+            wormholeId: string
+            contractAddress: string
+            shortABI: string
+            functionSig: string
         }
     }
 }
 
+// wormhole chain Ids: https://docs.wormhole.com/wormhole/contracts
 export const config: Config = {
-    bsct: {
-        borrow: {
-            contractAddress: ""
+    swap: {
+        fuji: {
+            wormholeId: "6", 
+            contractAddress: "fujiContract",
+            shortABI: 'function swapExactTokensForETH(uint256 amountIn, uint256 amountOutMin, address[] calldata path)',
+            functionSig: 'swapExactTokensForETH'
         }, 
-        lend: {
-            contractAddress: ""
+        goerli: {
+            wormholeId: "2",
+            contractAddress: "",
+            shortABI: '',
+            functionSig: ''
         }
-    },
-    goerli: {
-        borrow: {
-            contractAddress: ""
-        },
-        lend: {
-            contractAddress: "" 
+    }, 
+    bridge: {
+        fuji: {
+            wormholeId: "6", 
+            contractAddress: "",
+            shortABI: '',
+            functionSig: ''
+        }, 
+        goerli: {
+            wormholeId: "2",
+            contractAddress: "",
+            shortABI: '',
+            functionSig: ''
         }
     }
 }
