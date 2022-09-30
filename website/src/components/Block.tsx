@@ -15,7 +15,7 @@ interface BlockParams {
     setBlocks: React.Dispatch<React.SetStateAction<Blocks>>
     index: number
     id: string
-    removeBlock: (index: number) => void
+    removeBlock: (id: string) => void
 }
 
 export default function Block({ blocks, setBlocks, id, index, removeBlock }: BlockParams) {
@@ -237,14 +237,14 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
             </div>
             <div className="flex flex-row">
                 <div className="flex items-right px-10">
-                    <button>
+                    <button className="hover:scale-110 duration-200">
                         <GiTwinShell className="scale-150"></GiTwinShell>
                     </button>
                 </div>
 
                 <div className="flex items-center z-10">
-                    <button onClick={() => removeBlock(index)} >
-                        <BsTrash />
+                    <button onClick={() => removeBlock(id)} >
+                        <BsTrash className="hover:scale-110 duration-200"/>
                     </button>
                 </div>
 

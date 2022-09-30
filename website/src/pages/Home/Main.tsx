@@ -27,6 +27,8 @@ export type Blocks = BlockInput[]
 
 export default function HomePageMain() {
 
+  const [nonce, setNonce] = useState<number>(1); 
+
   const [defaultBlock, setDefaultBlock] = useState<BlockInput>({ 
     id: 'item-0', 
     strategy: 'Swap',
@@ -40,11 +42,11 @@ export default function HomePageMain() {
     defaultBlock
   ])
 
-  const removeBlock = (index: number) => {
+  const removeBlock = (id: string) => {
     console.log('remove block'); 
     setBlocks((blocks) =>
-      blocks.filter(function(item, itemIdx) {
-        return itemIdx != index; 
+      blocks.filter(function(block, itemIdx) {
+        return block.id != id; 
       }))
   }
 
@@ -52,8 +54,9 @@ export default function HomePageMain() {
     console.log("pushing new block");
     setBlocks([...blocks, {
       ...defaultBlock,
-      id: `item=${blocks.length}`,
+      id: `item=${nonce}`,
     }]); 
+    setNonce((prevNonce) => prevNonce + 1); 
   }
 
   const encodeParams = (shortABI: any, functionSig: any, params: any) => {
@@ -137,12 +140,15 @@ export default function HomePageMain() {
           </div>
         </div>
         <div className="py-10  flex flex-col space-y-2 items-center justify-center">
-          <button onClick={addBlock} className="mb-10 scale-125">
-            <IoIosAddCircleOutline className="scale-125"/>
-          </button>
+          <div className="hover:scale-110 duration-200 origin-center">
+            <button onClick={addBlock} className="mb-10 origin-center scale-110 duration-200 ">
+              <IoIosAddCircleOutline className="scale-150 origin-center duration-200 "/>
+            </button>
+          </div>
+          
 
           <button onClick={executeBlocks}>
-            <div className="inline-block align-middle">
+            <div className="inline-block align-middle hover:scale-125 duration-200 ">
                 <img src={xHolas} alt="xHolasLogo" className="h-full w-full max-h-12" />
               </div>
           </button>
