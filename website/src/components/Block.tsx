@@ -202,7 +202,7 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                     ) 
                 }
                     {
-                    (strategy == "Swap" || strategy == "Bridge") && (
+                    (strategy == "Swap" || strategy == "Bridge" || strategy == "Lend" || strategy == "Borrow") && (
                         <div className="flex flex-row justify-center">
 
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
