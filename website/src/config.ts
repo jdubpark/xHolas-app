@@ -23,8 +23,11 @@ export const config: Config = {
     swap: {
         fuji: {
             wormholeId: "6", 
-            contractAddress: "fujiContract",
-            shortABI: 'function swapExactTokensForETH(uint256 amountIn, uint256 amountOutMin, address[] calldata path)',
+            // trader joe's router 0xd7f655E3376cE2D7A2b08fF01Eb3B1023191A901
+            // trader joe's pair 0x8730c9b589f4268a7d14294d2c98512eef7a9f99
+            contractAddress: "0xd7f655E3376cE2D7A2b08fF01Eb3B1023191A901",
+            // this shortABI needs to be updated to swapExactTokensfForTokens
+            shortABI: 'function swapExactTokensForETH (uint256 amountIn, uint256 amountOutMin, address[] calldata path)',
             functionSig: 'swapExactTokensForETH'
         }, 
         goerli: {
