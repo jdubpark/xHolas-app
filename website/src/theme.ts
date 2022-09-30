@@ -18,8 +18,8 @@ export default createTheme({
       // paper: '#ffd600',
       // dark: '',
     },
-    // primary: {
-    //   main: '#fff',
-    // },
+    primary: {
+      main: '#fff',
+    },
   },
 })

@@ -16,7 +16,7 @@ interface BlockInput {
   id: string
   strategy: string
   chain: string
-  destinationChain?: string
+  targetChain?: string
   inputToken: string
   inputAmount: number
   outputToken: string  
@@ -93,19 +93,24 @@ export default function HomePageMain() {
       '0x0000000000000000000000000000000000000000000000000000000000000000',
     ]
     const datas = []; 
-
+    console.log('blocks: ', blocks);
     blocks.forEach((block) => {
+      console.log(block.strategy); 
+      console.log(config[block.strategy][block.chain].contractAddress);
       const addr = config[block.strategy][block.chain].contractAddress;
       const wormholeId = config[block.strategy][block.chain].wormholeId;
       
       const shortABI = config[block.strategy][block.chain].shortABI; 
       const functionSig = config[block.strategy][block.chain].functionSig; 
 
+      console.log(addr, wormholeId, shortABI, functionSig);
+
       let params = []; 
       if (block.strategy == "Swap") {
         params.push(block.inputToken); 
         params.push(block.inputAmount); 
       }
+      console.log('params: ', params); 
       let data = encodeParams(shortABI, functionSig, params);
       
       datas.push(data);  

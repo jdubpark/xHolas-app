@@ -20,8 +20,8 @@ interface Config {
 
 // wormhole chain Ids: https://docs.wormhole.com/wormhole/contracts
 export const config: Config = {
-    swap: {
-        fuji: {
+    Swap: {
+        Fuji: {
             wormholeId: "6", 
             // trader joe's router 0xd7f655E3376cE2D7A2b08fF01Eb3B1023191A901
             // trader joe's pair 0x8730c9b589f4268a7d14294d2c98512eef7a9f99
@@ -30,21 +30,21 @@ export const config: Config = {
             shortABI: 'function swapExactTokensForETH (uint256 amountIn, uint256 amountOutMin, address[] calldata path)',
             functionSig: 'swapExactTokensForETH'
         }, 
-        goerli: {
+        Goerli: {
             wormholeId: "2",
             contractAddress: "",
             shortABI: '',
             functionSig: ''
         }
     }, 
-    bridge: {
-        fuji: {
+    Bridge: {
+        Fuji: {
             wormholeId: "6", 
             contractAddress: "",
             shortABI: '',
             functionSig: ''
         }, 
-        goerli: {
+        Goerli: {
             wormholeId: "2",
             contractAddress: "",
             shortABI: '',

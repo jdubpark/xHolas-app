@@ -22,6 +22,7 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
 
     // drop down options 
     const [chain, setChain] = useState<string>("");
+    const [targetChain, setTargetChain] = useState<string>(""); 
     const [strategy, setStrategy] = useState<string>("");
 
     // for swaps 
@@ -89,6 +90,18 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
         setChain(event.target.value); 
     }
 
+    const handleTargetChainChange = (event: SelectChangeEvent) => {
+        setBlocks(blocks.map((block) => {
+            if (block.id == id) {
+                return {
+                    ...block,
+                    targetChain: event.target.value
+                }
+            } else return block; 
+        }))
+        setTargetChain(event.target.value); 
+    }
+
     const handleInputTokenChange = (event: SelectChangeEvent) => {
         setBlocks(blocks.map((block) => {
             if (block.id == id) {
@@ -101,16 +114,18 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
         setInputToken(event.target.value); 
     }
 
-    const handleInputAmountChange = (event: SelectChangeEvent) => {
+    const handleInputAmountChange = (value: string) => {
+        console.log('in handle input amount: ', value); 
         setBlocks(blocks.map((block) => {
             if (block.id == id) {
                 return {
                     ...block,
-                    inputAmount: parseInt(event.target.value)
+                    inputAmount: parseInt(value)
                 }
             } else return block; 
         }))
-        setInputAmount(parseInt(event.target.value)); 
+        console.log(parseInt(value)); 
+        setInputAmount(parseInt(value)); 
     }
 
     const handleOutputTokenChange = (event: SelectChangeEvent) => {
@@ -171,13 +186,13 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                 {
                     (strategy == "Bridge") && (
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
-                                <InputLabel id="input-label-chain">Destination Chain</InputLabel>
+                                <InputLabel id="input-label-chain">Target Chain</InputLabel>
                                 <Select
                                     labelId="select-chain-label"
                                     id="select-id"
-                                    value={chain}
-                                    label="Chain"
-                                    onChange={handleChainChange}
+                                    value={targetChain}
+                                    label="TargetChain"
+                                    onChange={handleTargetChainChange}
                                 >
                                     <MenuItem value={"Fuji"}>Fuji</MenuItem>
                                     <MenuItem value={"Goerli"}>Goerli</MenuItem>
@@ -201,6 +216,8 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                                 >
                                     <MenuItem value={"HTK"}>HTK</MenuItem>
                                     <MenuItem value={"CET"}>CET</MenuItem>
+                                    <MenuItem value={"wormHTK"}>wormHTK</MenuItem>
+                                    <MenuItem value={"wormCET"}>wormCET</MenuItem>
                                 </Select>
                             </FormControl>
 
@@ -215,6 +232,8 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                                 >
                                     <MenuItem value={"HTK"}>HTK</MenuItem>
                                     <MenuItem value={"CET"}>CET</MenuItem>
+                                    <MenuItem value={"wormHTK"}>wormHTK</MenuItem>
+                                    <MenuItem value={"wormCET"}>wormCET</MenuItem>
                                 </Select>
                             </FormControl>
 
@@ -224,8 +243,14 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                                     type="number"
                                     label="Amount"
                                     variant="outlined"
-                                    // value={inputAmount}
-                                    onChange={(event) => handleInputAmountChange}
+                                    value={inputAmount}
+                                    onChange={event => {
+                                        const value: string = event.target.value!; 
+                                        if (value != "NaN") {
+                                            handleInputAmountChange(value);
+                                        }
+                                        
+                                    }}
                                     inputProps={{ type: 'number' }}
                                 >
                                 </TextField>
