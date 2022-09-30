@@ -12,7 +12,7 @@ interface Config {
         [strategy: string] : {
             wormholeId: string
             contractAddress: string
-            shortABI: string
+            shortABI: [string]
             functionSig: string
         }
     }
@@ -27,27 +27,28 @@ export const config: Config = {
             // trader joe's pair 0x8730c9b589f4268a7d14294d2c98512eef7a9f99
             contractAddress: "0xd7f655E3376cE2D7A2b08fF01Eb3B1023191A901",
             // this shortABI needs to be updated to swapExactTokensfForTokens
-            shortABI: 'function swapExactTokensForETH (uint256 amountIn, uint256 amountOutMin, address[] calldata path)',
+            shortABI: ["function swapExactTokensForTokens (uint256 amountIn, uint256 amountOutMin, address[] calldata path)"],
             functionSig: 'swapExactTokensForETH'
         }, 
         Goerli: {
             wormholeId: "2",
-            contractAddress: "",
-            shortABI: '',
-            functionSig: ''
+            // uniswap v2 
+            contractAddress: "0x7992275B169FeCd597e96409eBBD1826a671Fce8",
+            shortABI: ['function swapExactETHForTokens(uint256 value, uint256 amountOutMin, address[] calldata path)'],
+            functionSig: 'swapExactETHForTokens'
         }
     }, 
     Bridge: {
         Fuji: {
             wormholeId: "6", 
             contractAddress: "",
-            shortABI: '',
+            shortABI: [''],
             functionSig: ''
         }, 
         Goerli: {
             wormholeId: "2",
             contractAddress: "",
-            shortABI: '',
+            shortABI: [''],
             functionSig: ''
         }
     }

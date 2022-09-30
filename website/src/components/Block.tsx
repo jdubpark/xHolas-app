@@ -179,7 +179,7 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                         >
                             <MenuItem value={"Fuji"}>Fuji</MenuItem>
                             <MenuItem value={"Goerli"}>Goerli</MenuItem>
-                            <MenuItem value={"Ethereum"}>Ethereum</MenuItem>
+                            {/* <MenuItem value={"Ethereum"}>Ethereum</MenuItem> */}
                         </Select>
                     </FormControl>
                 </div>
@@ -196,7 +196,7 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                                 >
                                     <MenuItem value={"Fuji"}>Fuji</MenuItem>
                                     <MenuItem value={"Goerli"}>Goerli</MenuItem>
-                                    <MenuItem value={"Ethereum"}>Ethereum</MenuItem>
+                                    {/* <MenuItem value={"Ethereum"}>Ethereum</MenuItem> */}
                                 </Select>
                             </FormControl>
                     ) 

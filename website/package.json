@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.6",
+    "@nomiclabs/hardhat-ethers": "^2.1.1",
     "@rainbow-me/rainbowkit": "^0.4.5",
     "@reduxjs/toolkit": "^1.8.2",
     "@shopify/draggable": "^1.0.0-beta.8",
