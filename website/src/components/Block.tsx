@@ -191,26 +191,26 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                         <div className="flex flex-row justify-center">
 
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
-                                <InputLabel id="input-label-strategy">Input Token</InputLabel>
+                                <InputLabel id="input-label-input-token">Input</InputLabel>
                                 <Select
-                                    labelId="select-strategy-label"
-                                    id="select-id"
-                                    value={strategy}
-                                    label="Strategy"
+                                    labelId="select-input-token-label"
+                                    id="input-token-id"
+                                    value={inputToken}
+                                    label="Input"
                                     onChange={handleInputTokenChange}
                                 >
-                                    <MenuItem value={"Swap"}>HTK</MenuItem>
-                                    <MenuItem value={"Borrow"}>CET</MenuItem>
+                                    <MenuItem value={"HTK"}>HTK</MenuItem>
+                                    <MenuItem value={"CET"}>CET</MenuItem>
                                 </Select>
                             </FormControl>
 
                             <FormControl sx={{ m: 1, minWidth: 120 }}>
-                                <InputLabel id="input-label-strategy">Output Token</InputLabel>
+                                <InputLabel id="input-label-output-token">Output</InputLabel>
                                 <Select
-                                    labelId="select-strategy-label"
-                                    id="select-id"
+                                    labelId="select-output-token-label"
+                                    id="output-token-id"
                                     value={outputToken}
-                                    label="Strategy"
+                                    label="Output"
                                     onChange={handleOutputTokenChange}
                                 >
                                     <MenuItem value={"HTK"}>HTK</MenuItem>
@@ -222,10 +222,11 @@ export default function Block({ blocks, setBlocks, id, index, removeBlock }: Blo
                                 <TextField
                                     id="outlined-number"
                                     type="number"
+                                    label="Amount"
                                     variant="outlined"
-                                    required
-                                    value={inputAmount}
+                                    // value={inputAmount}
                                     onChange={(event) => handleInputAmountChange}
+                                    inputProps={{ type: 'number' }}
                                 >
                                 </TextField>
                             </FormControl>
