@@ -1,7 +1,12 @@
 # xHolas Web
 
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Videos
+
+[xHolas Demo](https://www.loom.com/share/7691e569d6f74a098961e89daddb0e87)
+
+[xHolas Contract Flow](https://www.loom.com/share/085d9fb87d394b8bb56f7c303ffe5af5)
 
 ## Available Scripts
 
