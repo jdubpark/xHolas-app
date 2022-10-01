@@ -1,12 +1,15 @@
 # xHolas Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Non-working demo of frontend (to-be-fixed): [xHolas frontend](https://xholas.vercel.app/)
 
-## Videos
+Working demo of the app: [xHolas Demo](https://www.loom.com/share/7691e569d6f74a098961e89daddb0e87)
 
-[xHolas Demo](https://www.loom.com/share/7691e569d6f74a098961e89daddb0e87)
+* Note: Uses script that mimicks signing only once (one function call to entry point).
 
-[xHolas Contract Flow](https://www.loom.com/share/085d9fb87d394b8bb56f7c303ffe5af5)
+## Explanation Videos
+
+- [xHolas Demo](https://www.loom.com/share/7691e569d6f74a098961e89daddb0e87)
+- [xHolas Contract Flow](https://www.loom.com/share/085d9fb87d394b8bb56f7c303ffe5af5)
 
 ## Available Scripts
 
