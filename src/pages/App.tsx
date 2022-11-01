@@ -2,15 +2,11 @@ import React, { ReactNode } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-
 import 'react-toastify/dist/ReactToastify.min.css'
-
 import ErrorBoundary from '../components/ErrorBoundary'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-// pages for Outlet (react-router)
 import HomePage from './Home'
-// actual pages
 import HomePageMain from './Home/Main'
 import PageNotFound from './PageNotFound'
 

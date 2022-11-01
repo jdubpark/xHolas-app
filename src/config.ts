@@ -1,3 +1,24 @@
+interface StakingConfig {
+    [chain: string] : {
+        name: string
+        Lido: string 
+        RocketPool: string
+    }
+}
+
+export const stakingConfig: StakingConfig = {
+    mainnet : {
+        name: "Ethereum",
+        Lido: "0x47EbaB13B806773ec2A2d16873e2dF770D130b50",
+        RocketPool: ""
+    }, 
+    goerli : {
+        name: "Goerli", 
+        Lido: "0x2DD6530F136D2B56330792D46aF959D9EA62E276", 
+        RocketPool: ""
+    }
+}
+
 interface NetworkConfig {
     type: string
     wormholeChainId: number

@@ -4,15 +4,15 @@ import { BsTrash } from 'react-icons/bs'
 import { useContractWrite, useContract, useSigner } from 'wagmi'
 
 import Container from '../../components/Container'
-import Block from '../../components/Block'
-import List from '../../components/List'
+import StakingUI from '../../components/StakingUI'; 
+
 import NewList from '../../components/NewList' 
 import xHolas from '../../assets/xHolas.svg'
-import { config } from '../../config'
 import { ethers } from "ethers"
 
 import { XHolas, XHolas__factory } from '../../../types'
 import XHolasABI from '../../contracts/xHolas.json' 
+
 // assert {type: 'json'}
 
 // import detectEthereumProvider from '@metamask/detect-provider';
@@ -187,72 +187,42 @@ export default function HomePageMain() {
     console.log('tx: ', tx); 
   }, [signer, contract])
 
-  //   if(window.ethereum?.request({method: 'eth_requestAccounts'})){
-  //     const provider = new ethers.providers.Web3Provider(window.ethereum);
-  //     const signer = provider.getSigner();
-  //     const address = await signer.getAddress();
-
-  //     const xHolasContractAddress = "" // xHolas contract address; 
-  //     const xHolasContract = new ethers.Contract(xHolasABI, xHolasContractAddress)
-
-  //     const tx = {
-  //     from: address,
-  //     to: xHolasContractAddress,
-  //     value: "some wei value", // this is the value in wei to send
-  //     data: contract.methods.YOUR_CONTRACT_METHOD_HERE().encodeABI()
-  //     }
-
-  //     const txHash = await window.ethereum.request({
-  //     method: 'eth_sendTransaction',
-  //     params: [tx]
-  //     });
-
-  //     // do something with your transaction hash here
-  //     console.log({txHash});
-  //   }else{
-  //     console.log('user must connect wallet');
-  //   }
-
-  //   // call executeTransactionsEntryPoint
-  //   // const contract = XHolas__factory.connect(networkConfig.goerli.xProxyAddress as string, signer.goerli)
-  //   // const tx = await contract.batchExec(tos, configs, [2, 2] datas, {
-  //   //   value: ethers.utils.parseEther('0.0001'),
-  //   //   ...stupidConfig.goerli,
-  //   // })
-
-  // }
-
   return (
     <Container>
       <section>
         <div className="">
           <div className="py-6 px-10">
-            <h2 className="text-[#7b3fe4] text-xl font-semibold">Build your transactions</h2>
+            <h2 className="text-[#7b3fe4] text-xl font-semibold">Staking Pools</h2>
           </div>
-          <div className="flex flex-col space-y-2 py-4">
+          <div className="px-10 flex flex-col space-y-2 py-4 ">
+            <StakingUI chain={"mainnet"} apr={5.4} staked={1000000}></StakingUI>
+            <StakingUI chain={"goerli"} apr={3.6} staked={900000}></StakingUI>
+          
+          </div>
+          {/* <div className="flex flex-col space-y-2 py-4"> */}
             {/* <List blocks={blocks} removeBlock={removeBlock}></List> */}
-            <NewList blocks={blocks} setBlocks={setBlocks} removeBlock={removeBlock}></NewList>
+            {/* <NewList blocks={blocks} setBlocks={setBlocks} removeBlock={removeBlock}></NewList> */}
             {/* {blocks.length ? blocks.map((block, idx) => (
                 // <BlockRow key={`${block.name}_${idx}`} block={block} index={idx}/>
                 <Block key={idx} defaultName={block.defaultName} defaultChain={block.defaultChain} index={idx} removeBlock={removeBlock}></Block>
               )
             ) : <></>} */}
-          </div>
+          {/* </div> */}
         </div>
-        <div className="py-10  flex flex-col space-y-2 items-center justify-center">
-          <div className="hover:scale-110 duration-200 origin-center">
+        {/* <div className="py-10  flex flex-col space-y-2 items-center justify-center"> */}
+          {/* <div className="hover:scale-110 duration-200 origin-center">
             <button onClick={addBlock} className="mb-10 origin-center scale-110 duration-200 ">
               <IoIosAddCircleOutline className="scale-150 origin-center duration-200 "/>
             </button>
-          </div>
+          </div> */}
           
 
-          <button onClick={executeBlocks}>
+          {/* <button onClick={executeBlocks}>
             <div className="inline-block align-middle hover:scale-125 duration-200 ">
                 <img src={xHolas} alt="xHolasLogo" className="h-full w-full max-h-12" />
               </div>
-          </button>
-        </div>
+          </button> */}
+        {/* </div> */}
       </section>
     </Container>
   )
