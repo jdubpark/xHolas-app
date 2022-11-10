@@ -14,7 +14,7 @@ export const stakingConfig: StakingConfig = {
     }, 
     goerli : {
         name: "Goerli", 
-        Lido: "0x2DD6530F136D2B56330792D46aF959D9EA62E276", 
+        Lido: "0x1643E812aE58766192Cf7D2Cf9567dF2C37e9B7F", 
         RocketPool: ""
     }
 }
