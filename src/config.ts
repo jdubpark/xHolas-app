@@ -1,21 +1,57 @@
 interface StakingConfig {
     [chain: string] : {
+        token: string
         name: string
         Lido: string 
-        RocketPool: string
+        RocketPool: string,
+        stETH: string, 
+        rETH: string
+    }
+}
+
+interface IonConfig {
+    [chain: string] : {
+        stETHVault: string, 
+        rETHVault: string,
+    }
+}
+
+export const ionConfig: IonConfig = {
+    sepolia: {
+        stETHVault: "",
+        rETHVault: "",
+    },
+    goerli: {
+        stETHVault: "0x72Ce79393b6CA5237fA5628e1B85A951136eb271", 
+        rETHVault: ""
     }
 }
 
 export const stakingConfig: StakingConfig = {
     mainnet : {
+        token: "", 
         name: "Ethereum",
         Lido: "0x47EbaB13B806773ec2A2d16873e2dF770D130b50",
-        RocketPool: ""
+        RocketPool: "",
+        stETH: "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84", 
+        rETH: "", 
     }, 
     goerli : {
+        token: "", 
         name: "Goerli", 
         Lido: "0x1643E812aE58766192Cf7D2Cf9567dF2C37e9B7F", 
-        RocketPool: ""
+        RocketPool: "",
+        stETH: "",
+        rETH: ""
+    },
+    mumbai: {
+        token: "0x0000000000000000000000000000000000001010", 
+        name: "Mumbai", 
+        Lido: "",
+        RocketPool: "",
+        stETH: "",
+        rETH: ""
+
     }
 }
 
