@@ -11,6 +11,8 @@ interface StakingConfig {
 
 interface IonConfig {
     [chain: string] : {
+        allETH: string, 
+        ERC20Mock: string, 
         stETHVault: string, 
         rETHVault: string,
     }
@@ -18,10 +20,14 @@ interface IonConfig {
 
 export const ionConfig: IonConfig = {
     sepolia: {
+        allETH: "", 
+        ERC20Mock: "", 
         stETHVault: "",
         rETHVault: "",
     },
     goerli: {
+        allETH: "0x0176e257EdE13742aEC31BEA8E8f2b00e2CC3ED7",
+        ERC20Mock: "0x67AF079DcfC60e1118aE9FC0433f8e187B4A79C8", 
         stETHVault: "0x72Ce79393b6CA5237fA5628e1B85A951136eb271", 
         rETHVault: ""
     }

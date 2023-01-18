@@ -6,7 +6,7 @@ export default createTheme({
       styleOverrides: {
         tooltip: {
           fontSize: '14px',
-          backgroundColor: 'rgba(30,30,30,0.8)',
+          backgroundColor: 'rgba(,30,30,0.8)',
         },
       },
     },
@@ -14,7 +14,7 @@ export default createTheme({
   palette: {
     mode: 'dark',
     background: {
-      default: '#40233A',
+      default: '#FFFBFE',
       // paper: '#ffd600',
       // dark: '',
     },

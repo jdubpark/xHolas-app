@@ -2,12 +2,10 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import holaLogo from '../../assets/hola.svg'
-
 import Container from '../../components/Container'
 import HeaderNav from '../../components/Header'
 // import useCurrentPath from '../../hooks/useCurrentPath'
-import xHolasLogo from '../../assets/xHolas.svg'
+import Logo from '../../assets/logo.png'
 
 export default function Header() {
   // const currentPath = useCurrentPath()
@@ -15,14 +13,25 @@ export default function Header() {
     <div className="navbar pt-3">
       <Container>
         <HeaderNav.Left>
-          <Link to="/" className="inline-block py-1 px-2">
-            <div className="inline-block align-middle">
-              <img src={xHolasLogo} alt="xHolas" className="h-full w-full max-h-12" />
-            </div>
-            <div className="inline-block text-2xl text-gray-800 whitespace-nowrap tracking-tight align-middle">
-              <span className="text-yellow-500 font-bold">xHolas</span>
-            </div>
-          </Link>
+          <div className="flex flex-row text-midnight font-bold text-xl items-center space-x-8">
+            <Link to="/" className="inline-block py-1">
+              <div className="inline-block align-middle">
+                <img src={Logo} alt="Ion Protocol" className="h-full w-full max-h-12" />
+              </div>
+              {/* <div className="inline-block text-2xl text-gray-800 whitespace-nowrap tracking-tight align-middle">
+                <span className="text-midnight font-bold">Ion Protocol</span>
+              </div> */}
+            </Link>
+            <Link to='/deposit' className="">
+              Deposit
+            </Link>
+            <Link to='/redeem' className="">
+              Redeem
+            </Link>
+            <Link to='/bribe' className="">
+              Bribe
+            </Link>
+          </div>
         </HeaderNav.Left>
         {
           // <HeaderNav.Center>

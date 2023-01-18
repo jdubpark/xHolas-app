@@ -35,7 +35,7 @@ const { chains, provider } = configureChains(
 )
 
 const { connectors } = getDefaultWallets({
-  appName: 'xHolas',
+  appName: 'Ion Protocol',
   chains,
 })
 

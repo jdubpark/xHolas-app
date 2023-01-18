@@ -9,6 +9,8 @@ import Footer from '../layouts/Footer'
 import HomePage from './Home'
 import HomePageMain from './Home/Main'
 import PageNotFound from './PageNotFound'
+import DepositPage from './Deposit/Deposit'
+import Dashboard from './Home/Dashboard'
 
 function AppWrapper({ children }: { children: ReactNode }) {
   return <div className="flex flex-col justify-between w-screen min-h-screen">{children}</div>
@@ -21,17 +23,17 @@ function App() {
         <Helmet>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
-          <meta name="description" content="xHolas Trade" />
-          <title>xHolas</title>
-          <link rel="canonical" href="https://xholas.xyz" />
+          <meta name="description" content="Ion Protocol App" />
+          <title>Ion Protocol</title>
+          <link rel="canonical" href="" />
         </Helmet>
         <Header />
         <div className="mb-auto">
           <Routes>
             <Route path="*" element={<PageNotFound />} />
-            <Route path="/" element={<HomePage />}>
-              <Route index element={<HomePageMain />} />
+            <Route path="/" element={<Dashboard />}>
             </Route>
+            <Route path="/deposit" element={<DepositPage />}/>
             {
               // <Route path="/create" element={<CreatePage />}>
               //   <Route index element={<CreatePageMain />} />

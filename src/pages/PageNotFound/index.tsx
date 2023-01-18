@@ -8,12 +8,12 @@ export default function PageNotFound() {
   return (
     <>
       <Helmet>
-        <title>Uh oh... xHolas</title>
+        <title>Uh oh... Ion Protocol</title>
       </Helmet>
       <Container>
         <section>
           <div>
-            <img src={emojiThinkingFace} alt="xHolas" className="h-full max-h-32 m-auto" />
+            <img src={emojiThinkingFace} alt="Ion Protocol" className="h-full max-h-32 m-auto" />
           </div>
           <div className="pt-4 text-center">
             <div className="text-2xl font-bold text-yellow-500">Uh oh... Page Not Found!</div>

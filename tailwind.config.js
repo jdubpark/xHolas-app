@@ -44,6 +44,11 @@ module.exports = {
       rose: colors.rose,
       // custom
       twitter: '#1DA1F2',
+      midnight: '#024958', 
+      pacific: '#34B5C7',
+      snow: '#FFFBFE',
+      burgundy: '#503D42', 
+      seashell: '#FEF5EF', 
     }),
     columns: {
       auto: 'auto',
