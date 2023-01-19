@@ -1,9 +1,10 @@
 import React from 'react'
 import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, usePagination } from 'react-table'
 import { ChevronDoubleLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDoubleRightIcon } from '@heroicons/react/solid'
-import { Button, PageButton } from './shared/Button'
-import { classNames } from './shared/Utils'
-import { SortIcon, SortUpIcon, SortDownIcon } from './shared/Icons'
+import { Button, PageButton } from './Button'
+import { classNames } from './Utils'
+import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
+
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -97,10 +98,12 @@ export function AvatarCell({ value, column, row }) {
     <div className="flex items-center">
       <div className="flex-shrink-0 h-10 w-10">
         <img className="h-10 w-10 rounded-full" src={row.original[column.imgAccessor]} alt="" />
+        {/* <img className="h-10 w-10 rounded-full" id="tokenImg" src={"./rETH.png"} alt=""/> */}
+        {/* <img src={"/rETH.png"}></img> */}
       </div>
       <div className="ml-4">
         <div className="text-sm font-medium text-gray-900">{value}</div>
-        <div className="text-sm text-gray-500">{row.original[column.emailAccessor]}</div>
+        <div className="text-sm text-gray-500">{row.original[column.descriptionAccessor]}</div>
       </div>
     </div>
   )
@@ -141,8 +144,8 @@ function Table({ columns, data }) {
 
   // Render the UI for your table
   return (
-    <>
-      <div className="sm:flex sm:gap-x-2">
+    <div className="py-4">
+      {/* <div className="sm:flex sm:gap-x-2">
         <GlobalFilter
           preGlobalFilteredRows={preGlobalFilteredRows}
           globalFilter={state.globalFilter}
@@ -157,7 +160,7 @@ function Table({ columns, data }) {
             ) : null
           )
         )}
-      </div>
+      </div> */}
       {/* table */}
       <div className="mt-4 flex flex-col">
         <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8">
@@ -231,7 +234,7 @@ function Table({ columns, data }) {
           <Button onClick={() => nextPage()} disabled={!canNextPage}>Next</Button>
         </div>
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-          <div className="flex gap-x-2 items-baseline">
+          <div className="text-sm text-gray-700 flex gap-x-2 items-baseline">
             <span className="text-sm text-gray-700">
               Page <span className="font-medium">{state.pageIndex + 1}</span> of <span className="font-medium">{pageOptions.length}</span>
             </span>
@@ -288,7 +291,7 @@ function Table({ columns, data }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

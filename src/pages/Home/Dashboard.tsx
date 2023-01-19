@@ -1,8 +1,105 @@
 import React, { Component, useState } from 'react';
 import Container from '../../components/Container';
-import Table from '../../components/Home/Table'
+import Table, { AvatarCell, SelectColumnFilter, StatusPill } from '../../components/Home/Table/Table'
+
+
+const getData = () => {
+    const data = [
+      {
+        name: 'vastETH',
+        description: 'stETH Vault',
+        network: 'Goerli', 
+        provider: 'Lido',
+        totalSupply: '1000', 
+        apy: '16%',
+    
+        title: 'Regional Paradigm Technician',
+        department: 'Optimization',
+        status: 'Active',
+        role: 'Admin',
+        age: 27,
+        imgUrl: '/tokens/stETH.jpeg',
+      },
+      {
+        name: 'varETH',
+        description: 'rETH Vault', 
+        network: 'Goerli',
+        provider: 'Lido', 
+        totalSupply: '850',
+        apy: '20%', 
+        title: 'Product Directives Officer',
+        department: 'Intranet',
+        status: 'Inactive',
+        role: 'Owner',
+        age: 43,
+        imgUrl: '/tokens/rETH.png',
+      },
+      {
+        name: 'vafrxETH',
+        description: 'frxETH Vault',
+        network: 'Mainnet',
+        provider: 'Frax',
+        totalSupply: '900',
+        apy: '30%', 
+        title: 'Forward Response Developer',
+        department: 'Directives',
+        status: 'Active',
+        role: 'Member',
+        age: 32,
+        imgUrl: '/tokens/frxETHDark.png',
+      },
+    ]
+    return [...data, ...data, ...data]
+  }
+  
 
 export default function Dashboard() {
+
+    const columns = React.useMemo(() => [
+        // {
+        //   Header: "Name",
+        //   accessor: 'name',
+        //   Cell: AvatarCell,
+        //   imgAccessor: "imgUrl", 
+        //   emailAccessor: "email"
+        // },
+        {
+          Header: "Vault",
+          accessor: 'name',
+          Cell: AvatarCell,
+          imgAccessor: "imgUrl",
+          descriptionAccessor: "description",
+        },
+        {
+          Header: "Network",
+          accessor: 'network',
+        },
+        {
+          Header: "Provider",
+          accessor: 'provider', 
+        },
+        {
+          Header: "Status",
+          accessor: 'status',
+          Cell: StatusPill,
+        },
+        {
+          Header: "APY",
+          accessor: 'apy',
+        },
+        // {
+        //   Header: "Role",
+        //   accessor: 'role',
+        //   Filter: SelectColumnFilter,  // new
+        //   filter: 'includes',
+        // },
+      ], [])
+
+    const data = React.useMemo(() => getData(), [])
+
+    console.log("columns: ", columns); 
+    console.log('data: ', data); 
+
     return (
         <div className="max-w-3xl mx-auto text-midnight text-xl font-bold">
             <h1>
@@ -62,6 +159,9 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+                <Table columns={columns} data={data}></Table>
+            
+            
             <button className="w-full my-2">
                 <h2 className="border rounded-md text-center py-3 ">
                     Deposit
